@@ -8,6 +8,7 @@ import type { MasterSelectorProps } from "./types";
 
 export function MasterSelector<T>({
   value,
+  entity,
   onChange,
   search,
   getOptionLabel,
@@ -50,7 +51,7 @@ export function MasterSelector<T>({
 
     try {
       const result = await search({
-        entity: term.trim(),
+        entity,
         query: term.trim(),
         page: pageNumber,
         pageSize

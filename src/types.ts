@@ -27,6 +27,7 @@ export type MasterSearchFn<T> = (
 ) => Promise<MasterSearchResult<T>>;
 
 export interface MasterSelectorProps<T> {
+  entity: string;
   value?: T | null;
   onChange: (value: T | null) => void;
   search: MasterSearchFn<T>;
