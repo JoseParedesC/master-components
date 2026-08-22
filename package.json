@@ -1,6 +1,6 @@
 {
   "name": "@joseparedesc/master-components",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Reusable React components for CRUD and search/select workflows for master data.",
   "type": "module",
   "main": "./dist/index.js",

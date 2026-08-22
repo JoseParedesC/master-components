@@ -6,6 +6,8 @@ import React, {
 } from "react";
 import type { MasterSelectorProps } from "./types";
 
+const EMPTY_OPTIONS: never[] = [];
+
 export function MasterSelector<T>({
   value,
   entity,
@@ -19,7 +21,7 @@ export function MasterSelector<T>({
   debounceMs = 300,
   pageSize = 20,
   allowInactive = false,
-  initialOptions = [],
+  initialOptions = EMPTY_OPTIONS,
   noResultsText = "No se encontraron resultados",
   loadingText = "Buscando...",
   errorText = "No fue posible realizar la búsqueda",
@@ -34,6 +36,7 @@ export function MasterSelector<T>({
   const [hasNextPage, setHasNextPage] = useState(false);
 
   const requestId = useRef(0);
+  const abortRef = useRef<AbortController | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const selectedLabel = value ? getOptionLabel(value) : "";
@@ -45,6 +48,11 @@ export function MasterSelector<T>({
       return;
     }
 
+    // Cancela la petición anterior (si sigue en curso) antes de lanzar una nueva.
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
     const currentRequest = ++requestId.current;
     setLoading(true);
     setError(false);
@@ -54,7 +62,8 @@ export function MasterSelector<T>({
         entity,
         query: term.trim(),
         page: pageNumber,
-        pageSize
+        pageSize,
+        signal: controller.signal
       });
 
       if (currentRequest !== requestId.current) return;
@@ -71,8 +80,12 @@ export function MasterSelector<T>({
       );
       setHasNextPage(result.hasNextPage ?? false);
       setPage(pageNumber);
-    } catch {
+    } catch (err) {
+      if (err instanceof DOMException && err.name === "AbortError") {
+        return; // petición cancelada intencionalmente, no es un error real
+      }
       if (currentRequest === requestId.current) {
+        console.error("MasterSelector search failed:", err);
         setError(true);
       }
     } finally {
