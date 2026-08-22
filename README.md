@@ -1,17 +1,17 @@
-# @your-scope/master-components
+# @joseparedesc/master-components
 
 Componentes React reutilizables para gestionar maestros y seleccionar registros mediante búsqueda.
 
 ## Instalación
 
 ```bash
-npm install @your-scope/master-components
+npm install @joseparedesc/master-components
 ```
 
 ## MasterSelector
 
 ```tsx
-import { MasterSelector } from "@your-scope/master-components";
+import { MasterSelector } from "@joseparedesc/master-components";
 
 interface Account {
   id: string;
@@ -54,7 +54,7 @@ La función `search` debe retornar:
 
 ## Publicar
 
-Antes de publicar cambia `@your-scope/master-components` por el nombre real de tu paquete.
+Antes de publicar cambia `@joseparedesc/master-components` por el nombre real de tu paquete.
 
 ```bash
 npm install
