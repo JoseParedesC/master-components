@@ -9,6 +9,7 @@ export function useMasterSearch<T>(searchFn: MasterSearchFn<T>) {
   const [error, setError] = useState<unknown>(null);
 
   const search = useCallback(async (
+    entity: string,
     query: string,
     page = 1,
     pageSize = 20
@@ -18,6 +19,7 @@ export function useMasterSearch<T>(searchFn: MasterSearchFn<T>) {
 
     try {
       const result = await searchFn({
+        entity,
         query,
         page,
         pageSize

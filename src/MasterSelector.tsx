@@ -50,6 +50,7 @@ export function MasterSelector<T>({
 
     try {
       const result = await search({
+        entity: term.trim(),
         query: term.trim(),
         page: pageNumber,
         pageSize
