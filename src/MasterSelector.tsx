@@ -18,7 +18,6 @@ export function MasterSelector<T>({
   placeholder = "Buscar...",
   disabled = false,
   minSearchLength = 0,
-  debounceMs = 300,
   pageSize = 20,
   allowInactive = false,
   initialOptions = EMPTY_OPTIONS,
@@ -106,10 +105,10 @@ export function MasterSelector<T>({
 
     const timer = window.setTimeout(() => {
       void executeSearch(query, 1);
-    }, debounceMs);
+    });
 
     return () => window.clearTimeout(timer);
-  }, [query, debounceMs, executeSearch, open]);
+  }, [query, executeSearch, open]);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {

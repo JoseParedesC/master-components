@@ -37,7 +37,6 @@ export interface MasterSelectorProps<T> {
   placeholder?: string;
   disabled?: boolean;
   minSearchLength?: number;
-  debounceMs?: number;
   pageSize?: number;
   allowInactive?: boolean;
   initialOptions?: T[];
