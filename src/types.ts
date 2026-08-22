@@ -15,6 +15,7 @@ export interface MasterSearchResult<T> {
 }
 
 export interface MasterSearchParams {
+  entity: string;
   query: string;
   page: number;
   pageSize: number;
