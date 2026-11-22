@@ -10,24 +10,58 @@ que se consulte por búsqueda remota. Hoy incluye `MasterSelector`.
 
 ## Cómo probar
 
-| Dónde | Para qué |
-| --- | --- |
-| **Laboratorio → Playground** | Formulario completo con inspector de solicitudes, eventos y valor. Cambia latencia, debounce, errores y paginación en caliente. |
-| **Componentes → MasterSelector** | Cada variante por separado, con el panel *Controls* para editar las props. |
-| **Pruebas → Comportamiento** | Cada story ejecuta una interacción automática (panel *Interactions*): teclado, cancelación, reintento, formularios. |
+<table>
+  <thead>
+    <tr><th>Dónde</th><th>Para qué</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Laboratorio → Playground</strong></td>
+      <td>Formulario completo con inspector de solicitudes, eventos y valor. Cambia latencia, debounce, errores y paginación en caliente.</td>
+    </tr>
+    <tr>
+      <td><strong>Componentes → MasterSelector</strong></td>
+      <td>Cada variante por separado, con el panel <em>Controls</em> para editar las props.</td>
+    </tr>
+    <tr>
+      <td><strong>Pruebas → Comportamiento</strong></td>
+      <td>Cada story ejecuta una interacción automática (panel <em>Interactions</em>): teclado, cancelación, reintento, formularios.</td>
+    </tr>
+  </tbody>
+</table>
 
 La barra superior permite cambiar el **tema** (Clásico, Esmeralda, Compacto, Oscuro) y el **ancho** del campo.
 El panel *Accessibility* revisa cada story con axe.
 
 ## Teclado
 
-| Tecla | Acción |
-| --- | --- |
-| `↓` `↑` | Abre el panel y mueve la selección; al llegar al final carga la siguiente página |
-| `Re Pág` `Av Pág` | Salta 8 opciones |
-| `Ctrl` + `Inicio` / `Fin` | Primera / última opción |
-| `Enter` | Elige la opción resaltada (no envía el formulario) |
-| `Esc` | Cierra y descarta lo escrito |
+<table>
+  <thead>
+    <tr><th>Tecla</th><th>Acción</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><kbd>↓</kbd> <kbd>↑</kbd></td>
+      <td>Abre el panel y mueve la selección; al llegar al final carga la siguiente página</td>
+    </tr>
+    <tr>
+      <td><kbd>Re Pág</kbd> <kbd>Av Pág</kbd></td>
+      <td>Salta 8 opciones</td>
+    </tr>
+    <tr>
+      <td><kbd>Ctrl</kbd> + <kbd>Inicio</kbd> / <kbd>Fin</kbd></td>
+      <td>Primera / última opción</td>
+    </tr>
+    <tr>
+      <td><kbd>Enter</kbd></td>
+      <td>Elige la opción resaltada (no envía el formulario)</td>
+    </tr>
+    <tr>
+      <td><kbd>Esc</kbd></td>
+      <td>Cierra y descarta lo escrito</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Uso
 
