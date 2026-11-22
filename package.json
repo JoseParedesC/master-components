@@ -1,6 +1,6 @@
 {
-  "name": "@joseparedesc/master-components",
-  "version": "0.1.5",
+  "name": "kbayro/master-components",
+  "version": "0.2.0",
   "description": "Reusable React components for CRUD and search/select workflows for master data.",
   "type": "module",
   "main": "./dist/index.js",
@@ -12,23 +12,35 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run typecheck && npm run build"
+    "prepublishOnly": "npm run typecheck && npm run build",
+    "demo": "vite --config vite.config.ts",
+    "build:demo": "vite build --config vite.config.ts",
+    "test": "vitest run"
   },
   "peerDependencies": {
     "react": ">=18"
   },
   "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.13",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "jsdom": "^31.0.1",
     "react": "^19.1.0",
+    "react-dom": "^19.3.1",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
   },
   "publishConfig": {
     "access": "public"

@@ -38,6 +38,58 @@ interface Account {
 />
 ```
 
+## Prototipo
+
+```bash
+npm install
+npm run demo        # http://localhost:5173
+npm test            # pruebas de comportamiento (teclado, estados, paginación)
+```
+
+La demo (`demo/`) simula cuentas contables, terceros y centros de costo con latencia,
+paginación, registros inactivos y errores configurables.
+
+## Teclado
+
+| Tecla | Acción |
+| --- | --- |
+| `↓` / `↑` | Abre el panel y mueve la selección; al llegar al final carga la siguiente página |
+| `Re Pág` / `Av Pág` | Salta 8 opciones |
+| `Ctrl` + `Inicio` / `Fin` | Primera / última opción |
+| `Enter` | Elige la opción resaltada (no envía el formulario) |
+| `Esc` | Cierra y descarta lo escrito |
+
+El componente sigue el patrón ARIA *combobox con listbox* (`aria-activedescendant`, región `aria-live`).
+
+## Props opcionales
+
+| Prop | Default | Descripción |
+| --- | --- | --- |
+| `getOptionDescription` | – | Segunda línea bajo cada opción |
+| `renderOption` | – | Render propio de la opción |
+| `debounceMs` | `250` | Espera tras la última tecla antes de buscar |
+| `minSearchLength` | `0` | Muestra una pista en lugar de buscar |
+| `clearable` | `true` | Botón para limpiar |
+| `invalid` | `false` | Estilo de error |
+| `name` | – | Input oculto con el id seleccionado (formularios nativos) |
+| `minLengthText`, `loadMoreText`, `retryText`, `clearLabel` | español | Textos |
+
+## Estilos
+
+Los estilos se inyectan solos. Se tematiza con variables CSS:
+
+```css
+.mi-selector {
+  --ms-accent: #0f766e;
+  --ms-radius: 4px;
+  --ms-height: 36px;
+}
+```
+
+Variables: `--ms-accent`, `--ms-accent-soft`, `--ms-ring`, `--ms-text`, `--ms-muted`,
+`--ms-border`, `--ms-surface`, `--ms-danger`, `--ms-radius`, `--ms-height`, `--ms-font`.
+También se exporta `masterComponentsCss` por si necesitas inyectarlo con CSP/nonce o en SSR.
+
 ## Contrato de búsqueda
 
 La función `search` debe retornar:
@@ -51,6 +103,9 @@ La función `search` debe retornar:
   hasNextPage?: boolean;
 }
 ```
+
+Si no envías `hasNextPage` pero sí `total`, se calcula solo. `search` recibe además
+`signal` (`AbortSignal`): pásalo a `fetch` para cancelar búsquedas obsoletas.
 
 ## Publicar
 
