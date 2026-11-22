@@ -1,0 +1,30 @@
+/* Escenario de las stories: ancho y tema controlados desde la barra de herramientas. */
+.sb-stage{
+  --stage-bg:#fff;--stage-fg:#18212f;--stage-muted:#667085;--stage-line:#e1e6ed;
+  box-sizing:border-box;min-height:380px;padding:4px;color:var(--stage-fg);
+  font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--stage-bg);
+}
+.sb-stage *{box-sizing:border-box}
+.sb-stage[data-fill="true"]{width:100%;padding:0}
+.sb-stage .sb-label{display:block;margin:0 0 6px;font-weight:600}
+.sb-stage .sb-hint{margin:6px 0 0;font-size:12.5px;color:var(--stage-muted)}
+
+/* Tema "Esmeralda" */
+.sb-stage[data-skin="emerald"] .ms-root{
+  --ms-accent:#0f766e;--ms-accent-soft:#e4f4f1;--ms-ring:rgba(15,118,110,.25);--ms-radius:6px;
+}
+/* Tema "Cuadrado" (esquinas rectas, alta densidad) */
+.sb-stage[data-skin="compact"] .ms-root{
+  --ms-accent:#5b3fd1;--ms-accent-soft:#efeafc;--ms-ring:rgba(91,63,209,.25);--ms-radius:2px;--ms-height:32px;
+}
+.sb-stage[data-skin="compact"] .ms-option{padding:5px 8px}
+/* Tema "Oscuro" */
+.sb-stage[data-skin="dark"]{
+  --stage-bg:#0f141c;--stage-fg:#e6ebf2;--stage-muted:#98a2b3;--stage-line:#263041;
+}
+.sb-stage[data-skin="dark"] .ms-root{
+  --ms-accent:#6aa7ff;--ms-accent-soft:rgba(106,167,255,.14);--ms-ring:rgba(106,167,255,.3);
+  --ms-text:#e6ebf2;--ms-muted:#98a2b3;--ms-placeholder:#667085;--ms-border:#2f3a4b;--ms-border-strong:#4a5a72;
+  --ms-border-soft:#232d3b;--ms-surface:#161d29;--ms-surface-alt:#121823;--ms-danger:#f97066;--ms-danger-soft:rgba(249,112,102,.12);
+}
+.sb-stage[data-skin="dark"] .ms-mark{background:rgba(106,167,255,.28)}

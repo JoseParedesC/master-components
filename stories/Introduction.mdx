@@ -1,0 +1,60 @@
+import { Meta, ArgTypes } from "@storybook/addon-docs/blocks";
+import { MasterSelector } from "../src";
+
+<Meta title="Introducción/Guía" />
+
+# master-components
+
+Componentes React para trabajar con **datos maestros**: cuentas, terceros, centros de costo y cualquier catálogo
+que se consulte por búsqueda remota. Hoy incluye `MasterSelector`.
+
+## Cómo probar
+
+| Dónde | Para qué |
+| --- | --- |
+| **Laboratorio → Playground** | Formulario completo con inspector de solicitudes, eventos y valor. Cambia latencia, debounce, errores y paginación en caliente. |
+| **Componentes → MasterSelector** | Cada variante por separado, con el panel *Controls* para editar las props. |
+| **Pruebas → Comportamiento** | Cada story ejecuta una interacción automática (panel *Interactions*): teclado, cancelación, reintento, formularios. |
+
+La barra superior permite cambiar el **tema** (Clásico, Esmeralda, Compacto, Oscuro) y el **ancho** del campo.
+El panel *Accessibility* revisa cada story con axe.
+
+## Teclado
+
+| Tecla | Acción |
+| --- | --- |
+| `↓` `↑` | Abre el panel y mueve la selección; al llegar al final carga la siguiente página |
+| `Re Pág` `Av Pág` | Salta 8 opciones |
+| `Ctrl` + `Inicio` / `Fin` | Primera / última opción |
+| `Enter` | Elige la opción resaltada (no envía el formulario) |
+| `Esc` | Cierra y descarta lo escrito |
+
+## Uso
+
+```tsx
+<MasterSelector<Account>
+  entity="cuentas"
+  value={account}
+  onChange={setAccount}
+  search={({ query, page, pageSize, signal }) =>
+    fetch(`/api/accounts?q=${encodeURIComponent(query)}&page=${page}&size=${pageSize}`, { signal })
+      .then((r) => r.json())
+  }
+  getOptionLabel={(a) => `${a.code} - ${a.name}`}
+  getOptionValue={(a) => a.id}
+/>
+```
+
+## Tematizar
+
+```css
+.mi-selector {
+  --ms-accent: #0f766e;
+  --ms-radius: 4px;
+  --ms-height: 36px;
+}
+```
+
+## Props
+
+<ArgTypes of={MasterSelector} />
