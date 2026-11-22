@@ -1,5 +1,5 @@
 {
-  "name": "kbayro/master-components",
+  "name": "@joseparedesc/master-components",
   "version": "0.2.0",
   "description": "Reusable React components for CRUD and search/select workflows for master data.",
   "type": "module",
