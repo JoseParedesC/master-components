@@ -17,6 +17,8 @@
   "include": [
     "src",
     "demo",
-    "tests"
+    "tests",
+    "stories",
+    ".storybook"
   ]
 }
